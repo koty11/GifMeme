@@ -69,7 +69,7 @@ gifmeme.generate = function(file, topText, bottomText, next){
         var topFontSize = getFontSize(ctx, topText, width, height);
         var bottomFontSize = getFontSize(ctx, bottomText, width, height);
 
-        gm(file).font(__dirname/+"/impact.ttf", 30).stroke("#000000").fill('#ffffff').gravity('North').drawText(0, topFontSize+15 , topText).drawText(0, height-15 , bottomText).write(outputDirectory + memefilename, function (err) {
+        gm(file).font(__dirname+"/impact.ttf", 30).stroke("#000000").fill('#ffffff').gravity('North').drawText(0, topFontSize+15 , topText).drawText(0, height-15 , bottomText).write(outputDirectory + memefilename, function (err) {
             if (err) {
                 return next(err);
             } else {
