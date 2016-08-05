@@ -1,4 +1,4 @@
-# GifMeme
+# GifMeme [![NPM Version](https://img.shields.io/npm/v/gifmeme.svg?style=flat)](https://www.npmjs.org/package/gifmeme)
 Node.js module for creating a meme from an animated gif.
 
 # To Install
