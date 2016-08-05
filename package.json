@@ -1,0 +1,31 @@
+{
+  "name": "gifmeme",
+  "version": "1.0.0",
+  "description": "Meme an animated gif with Canvas and GM",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Moosylvania/GifMeme.git"
+  },
+  "author": "Joe Madden <joe.madden@moosylvania.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Moosylvania/GifMeme/issues"
+  },
+  "homepage": "https://github.com/Moosylvania/GifMeme#readme",
+  "dependencies": {
+    "canvas": "^1.4.0",
+    "gm": "^1.23.0"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "gif",
+    "meme",
+    "canvas",
+    "animated",
+    "gif"
+  ]
+}
