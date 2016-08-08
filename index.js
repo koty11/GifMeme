@@ -1,6 +1,6 @@
 var fs = require('fs');
 var Canvas = require('canvas');
-var gm = require('gm');
+var gm = require('gm').subClass({imageMagick: true});
 
 var outputDirectory = './tmp';
 var appendedFilename = '-meme';
@@ -24,7 +24,7 @@ var getFontSize = function(context, text, width, height) {
         fontSize-=2;
     }
 
-    return fontSize;
+    return {fontSize:fontSize, width:context.measureText(text).width};
 };
 
 var gifmeme = module.exports;
@@ -69,12 +69,21 @@ gifmeme.generate = function(file, topText, bottomText, next){
         var topFontSize = getFontSize(ctx, topText, width, height);
         var bottomFontSize = getFontSize(ctx, bottomText, width, height);
 
-        gm(file).font(__dirname+"/impact.ttf", topFontSize).stroke("#000000").fill('#ffffff').gravity('North').drawText(0, topFontSize+15 , topText).font(__dirname+"/impact.ttf", bottomFontSize).drawText(0, height-15 , bottomText).write(outputDirectory + memefilename, function (err) {
-            if (err) {
-                return next(err);
-            } else {
-                return next(null, outputDirectory + memefilename);
-            }
+        gm(file).coalesce()
+            .font(__dirname+"/impact.ttf")
+            .stroke("#000000")
+            .fill('#ffffff')
+            .fontSize(topFontSize.fontSize)
+            .strokeWidth(1.5)
+            .drawText((width-topFontSize.width)/2, (topFontSize.fontSize+5),  topText)
+            .fontSize(bottomFontSize.fontSize)
+            .drawText((width-bottomFontSize.width)/2, height-15 , bottomText)
+            .write(outputDirectory + memefilename, function (err) {
+                if (err) {
+                    return next(err);
+                } else {
+                    return next(null, outputDirectory + memefilename);
+                }
         });
     });
 

@@ -7,7 +7,7 @@ Node.js module for creating a meme from an animated gif.
 # Requirements
 GifMeme utilizes Automattic's node-canvas module which has some pre-requisites (Cairo) that must be installed on your machine.  To find out more please check out their [Wiki](https://github.com/Automattic/node-canvas/wiki) and then come back here.
 
-GifMeme is also utilizing GraphicsMagick (you can use ImageMagick if you'd like) to finalize the output of the animated gif.
+GifMeme is also utilizing ImageMagick to finalize the output of the animated gif.
 
 # API
 
