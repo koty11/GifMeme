@@ -48,8 +48,8 @@ gifmeme.generate = function(file, topText, bottomText, next){
     memefilename = memefilename[memefilename.length-1];
 
     var parts = memefilename.split('.');
-    parts.pop();
-    parts.push(appendedFilename+'.gif');
+    var ext = parts.pop();
+    parts.push(appendedFilename+'.'+ext);
 
     memefilename = parts.join('');
 
