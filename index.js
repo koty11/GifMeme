@@ -75,7 +75,7 @@ gifmeme.generate = function(file, topText, bottomText, next){
             .fill('#ffffff')
             .fontSize(topFontSize.fontSize)
             .strokeWidth(1.5)
-            .drawText(0, (topFontSize.fontSize+5),  topText, "North")
+            .drawText(0, 15,  topText, "North")
             .fontSize(bottomFontSize.fontSize)
             .drawText(0, height-15 , bottomText, "North")
             .write(outputDirectory + memefilename, function (err) {
