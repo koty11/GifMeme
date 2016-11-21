@@ -41,9 +41,6 @@ gifmemef.init = function(output, append){
 gifmemef.generate = function(file, topText, bottomText,stroke,fill,font,font_name, next){
 
 
-    console.log("font: ",font);
-
-
     if(!fs.existsSync(outputDirectory)){
         fs.mkdirSync(outputDirectory);
     }
