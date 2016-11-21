@@ -13,8 +13,8 @@ var endsWith = function(str, suffix) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
 };
 
-var getFontSize = function(context, text, width, height,font) {
-    var fontSize = 100;
+var getFontSize = function(context, text, width, height, font) {
+    var fontSize = 90;
     context.textAlign = "center";
     context.fillStyle = "#fff";
     context.strokeStyle = "#000";
@@ -38,7 +38,7 @@ gifmemef.init = function(output, append){
     appendedFilename = append;
 };
 
-gifmemef.generate = function(file, topText, bottomText,stroke,fill,font,font_name, next){
+gifmemef.generate = function(file, topText, bottomText,stroke,fill,font,font_name, text_width, text_height, next){
 
 
     if(!fs.existsSync(outputDirectory)){
@@ -80,7 +80,7 @@ gifmemef.generate = function(file, topText, bottomText,stroke,fill,font,font_nam
             .fill(fill)
             .fontSize(topFontSize.fontSize)
             .strokeWidth(1.5)
-            .drawText(0, 15,  topText, "North")
+            .drawText(text_width, text_height,  topText, "North")
             .fontSize(bottomFontSize.fontSize)
             .drawText(0, height-15-bottomFontSize.fontSize, bottomText, "North")
             .write(outputDirectory + memefilename, function (err) {
