@@ -1,6 +1,6 @@
 {
   "name": "gifmemef",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Fork: Meme an animated gif with Canvas and GM",
   "main": "index.js",
   "scripts": {
