@@ -1,15 +1,19 @@
 var fs = require('fs');
 var Canvas = require('canvas');
+var services = require('./lib/data');
+const c_config = require('./config/config');
 var gm = require('gm').subClass({imageMagick: true});
+var config = c_config();
 
-var outputDirectory = './tmp';
-var appendedFilename = '-meme';
+var outputDirectory = config.outputDirectory();
+var appendedFilename = config.appendedFilename();
+
 
 var endsWith = function(str, suffix) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
 };
 
-var getFontSize = function(context, text, width, height) {
+var getFontSize = function(context, text, width, height,font) {
     var fontSize = 100;
     context.textAlign = "center";
     context.fillStyle = "#fff";
@@ -17,7 +21,7 @@ var getFontSize = function(context, text, width, height) {
     context.lineWidth = 6;
 
     while(1) {
-        context.font = "bold " + fontSize + "px Impact";
+        context.font = "bold " + fontSize + "px "+font;
         if( (context.measureText(text).width < (width-15)) && (fontSize < height/10) ) {
             break;
         }
@@ -27,14 +31,18 @@ var getFontSize = function(context, text, width, height) {
     return {fontSize:fontSize, width:context.measureText(text).width};
 };
 
-var gifmeme = module.exports;
+var gifmemef = module.exports;
 
-gifmeme.init = function(output, append){
+gifmemef.init = function(output, append){
     outputDirectory = output;
     appendedFilename = append;
 };
 
-gifmeme.generate = function(file, topText, bottomText, next){
+gifmemef.generate = function(file, topText, bottomText,stroke,fill,font,font_name, next){
+
+
+    console.log("font: ",font);
+
 
     if(!fs.existsSync(outputDirectory)){
         fs.mkdirSync(outputDirectory);
@@ -66,13 +74,13 @@ gifmeme.generate = function(file, topText, bottomText, next){
         var canvas = new Canvas(width, height);
         var ctx = canvas.getContext('2d');
 
-        var topFontSize = getFontSize(ctx, topText, width, height);
-        var bottomFontSize = getFontSize(ctx, bottomText, width, height);
+        var topFontSize = getFontSize(ctx, topText, width, height,font_name);
+        var bottomFontSize = getFontSize(ctx, bottomText, width, height,font_name);
 
         gm(file).coalesce()
-            .font(__dirname+"/impact.ttf")
-            .stroke("#000000")
-            .fill('#ffffff')
+            .font(font)
+            .stroke(stroke)
+            .fill(fill)
             .fontSize(topFontSize.fontSize)
             .strokeWidth(1.5)
             .drawText(0, 15,  topText, "North")

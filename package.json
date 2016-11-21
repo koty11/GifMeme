@@ -1,21 +1,21 @@
 {
-  "name": "gifmeme",
-  "version": "1.2.2",
-  "description": "Meme an animated gif with Canvas and GM",
+  "name": "gifmemef",
+  "version": "1.2.3",
+  "description": "Fork: Meme an animated gif with Canvas and GM",
   "main": "index.js",
   "scripts": {
     "test": "node test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Moosylvania/GifMeme.git"
+    "url": "git+https://github.com/koty11/GifMeme/GifMeme.git"
   },
-  "author": "Joe Madden <joe.madden@moosylvania.com>",
+  "author": "Oscar Casas <ocasas.machado@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Moosylvania/GifMeme/issues"
+    "url": "https://github.com/koty11/GifMeme/issues"
   },
-  "homepage": "https://github.com/Moosylvania/GifMeme#readme",
+  "homepage": "https://github.com/koty11/GifMeme#readme",
   "dependencies": {
     "canvas": "^1.4.0",
     "gm": "^1.23.0"

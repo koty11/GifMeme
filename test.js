@@ -1,6 +1,6 @@
-var gifmeme = require('./index');
+var gifmemef = require('./index');
 
-gifmeme.generate('./test.gif', 'Top of My Meme', 'Bottom of my Meme YEAH!!!!', function(err, filename){
+gifmemef.generate('./test.gif', 'Top Text', '','#396a0a','#54a00a',__dirname+'/assets/milk_script.ttf','Milk Script', function(err, filename){
     if(err){
         console.log(err);
     } else {
