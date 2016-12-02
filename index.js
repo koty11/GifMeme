@@ -13,8 +13,8 @@ var endsWith = function(str, suffix) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
 };
 
-var getFontSize = function(context, text, width, height, font) {
-    var fontSize = 90;
+var getFontSize = function(context, text, width, height, font,fontSize) {
+    var fontSize = fontSize;
     context.textAlign = "center";
     context.fillStyle = "#fff";
     context.strokeStyle = "#000";
@@ -38,7 +38,7 @@ gifmemef.init = function(output, append){
     appendedFilename = append;
 };
 
-gifmemef.generate = function(file, topText, bottomText,stroke,fill,font,font_name, text_width, text_height, next){
+gifmemef.generate = function(file, topText, bottomText,stroke,fill,font,font_name,fontsize, text_width, text_height, next){
 
 
     if(!fs.existsSync(outputDirectory)){
@@ -71,8 +71,8 @@ gifmemef.generate = function(file, topText, bottomText,stroke,fill,font,font_nam
         var canvas = new Canvas(width, height);
         var ctx = canvas.getContext('2d');
 
-        var topFontSize = getFontSize(ctx, topText, width, height,font_name);
-        var bottomFontSize = getFontSize(ctx, bottomText, width, height,font_name);
+        var topFontSize = getFontSize(ctx, topText, width, height,font_name,fontsize);
+        var bottomFontSize = getFontSize(ctx, bottomText, width, height,font_name,fontsize);
 
         gm(file).coalesce()
             .font(font)
